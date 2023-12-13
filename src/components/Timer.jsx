@@ -4,7 +4,7 @@ const Timer = ({ timeOut = 30000, onTimeout, mode }) => {
 	const [remainingTime, setRemainingTime] = useState(timeOut);
 
 	useEffect(() => {
-		console.log("timeout block");
+		// console.log("timeout block");
 		const pid = setTimeout(() => {
 			onTimeout();
 		}, timeOut);
@@ -14,7 +14,7 @@ const Timer = ({ timeOut = 30000, onTimeout, mode }) => {
 	}, [timeOut, onTimeout]);
 
 	useEffect(() => {
-		console.log("interval block");
+		// console.log("interval block");
 		const pid = setInterval(() => {
 			setRemainingTime((oldState) => oldState - 100);
 		}, 100);
