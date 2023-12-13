@@ -27,8 +27,10 @@ const Question = ({ keyBis: key, handleAnswerSelect, handleSkip }) => {
 	};
 
 	let answerState = "";
-	if (answer.selectedAnswer) {
+	if (answer.selectedAnswer && answer.isCorrect !== null) {
 		answerState = answer.isCorrect ? "correct" : "wrong";
+	} else if (answer.selectedAnswer) {
+		answerState = "answered";
 	}
 
 	return (
