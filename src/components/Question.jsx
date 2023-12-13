@@ -9,6 +9,14 @@ const Question = ({ keyBis: key, handleAnswerSelect, handleSkip }) => {
 		isCorrect: null,
 	});
 
+	let timer = 10000;
+	if (answer.selectedAnswer) {
+		timer = 1000;
+	}
+	if (answer.isCorrect !== null) {
+		timer = 2000;
+	}
+
 	const selectAnswer = (answer) => {
 		setAnswer({
 			selectedAnswer: answer,
@@ -35,7 +43,7 @@ const Question = ({ keyBis: key, handleAnswerSelect, handleSkip }) => {
 
 	return (
 		<div id="question">
-			<Timer timeOut={20000} onTimeout={handleSkip} />
+			<Timer timeOut={timer} onTimeout={answer.selectedAnswer === "" ? handleSkip : null} mode={answerState} key={timer} />
 			<h2>{questions[key].text}</h2>
 			<Answers answers={questions[key].answers} selectedAnswer={answer.selectedAnswer} answerState={answerState} onSelect={selectAnswer} />
 		</div>
